@@ -46,6 +46,12 @@ export const USDT_WETH_PAIR = '{{ usdt_weth_pair }}'
 
 export const SONE_USDT_PAIR = '{{ sone_usdt_pair }}'
 
+export const UNISWAP_WETH_USDT_PAIR = '{{ sone_usdt_pair }}'
+
+export const UNISWAP_WETH_DAI_PAIR = '{{ sone_usdt_pair }}'
+
+export const UNISWAP_WETH_USDC_PAIR = '{{ sone_usdt_pair }}'
+
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
 export const MINIMUM_USD_THRESHOLD_NEW_PAIRS = BigDecimal.fromString('0')
 
@@ -65,6 +71,10 @@ export const UNISWAP_FACTORY_ADDRESS = Address.fromString('{{ uniswap_factory_ad
 export const UNISWAP_SONE_ETH_PAIR_FIRST_LIQUDITY_BLOCK = BigInt.fromString('{{ uniswap_sone_eth_start_block }}')
 
 export const UNISWAP_WETH_USDT_PAIR_ADDRESS = Address.fromString('{{ uniswap_weth_usdt_pair_address }}')
+
+export const UNISWAP_WETH_DAI_PAIR_ADDRESS = Address.fromString('{{ uniswap_weth_dai_pair_address }}')
+
+export const UNISWAP_WETH_USDC_PAIR_ADDRESS = Address.fromString('{{ uniswap_weth_usdc_pair_address }}')
 
 export const UNISWAP_SONE_ETH_PAIR_ADDRESS = Address.fromString('{{ uniswap_sone_eth_pair_address }}')
 

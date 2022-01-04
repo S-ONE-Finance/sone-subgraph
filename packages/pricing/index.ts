@@ -15,6 +15,9 @@ import {
   USDT_ADDRESS,
   USDT_WETH_PAIR,
   WETH_ADDRESS,
+  UNISWAP_WETH_USDT_PAIR,
+  UNISWAP_WETH_DAI_PAIR,
+  UNISWAP_WETH_USDC_PAIR,
 } from 'const'
 import { Address, BigDecimal, BigInt, ethereum, log } from '@graphprotocol/graph-ts'
 
@@ -25,10 +28,6 @@ export function getUSDRate(token: Address, block: ethereum.Block): BigDecimal {
   if (token != USDT_ADDRESS) {
     const tokenPriceETH = getEthRate(token, block)
     const ethPriceUSD = getEthPriceInUSD()
-    log.info('result getUSDRate---#{}---#{}', [
-      tokenPriceETH.toString(),
-      ethPriceUSD.toString()
-    ])
     return ethPriceUSD.times(tokenPriceETH)
   }
 
@@ -58,7 +57,7 @@ export function getEthRate(token: Address, block: ethereum.Block): BigDecimal {
       WETH_ADDRESS.toHexString(),
       pair.token0().toHexString(),
       reserves.value0.toString(),
-      reserves.value1.toString()
+      reserves.value1.toString(),
     ])
 
     eth =
@@ -78,39 +77,29 @@ export function getSonePrice(block: ethereum.Block): BigDecimal {
   return getUSDRate(SONE_TOKEN_ADDRESS, block)
 }
 
-
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
-  const daiPair = PairContract.bind(Address.fromString(DAI_WETH_PAIR))
-  const usdcPair = PairContract.bind(Address.fromString(USDC_WETH_PAIR))
-  const usdtPair = PairContract.bind(Address.fromString(USDT_WETH_PAIR))
+  const daiPair = PairContract.bind(Address.fromString(DAI_WETH_PAIR != "" ? DAI_WETH_PAIR : UNISWAP_WETH_DAI_PAIR))
+  const usdcPair = PairContract.bind(Address.fromString(USDC_WETH_PAIR != "" ? USDC_WETH_PAIR : UNISWAP_WETH_USDC_PAIR))
+  const usdtPair = PairContract.bind(Address.fromString(USDT_WETH_PAIR != "" ? USDT_WETH_PAIR : UNISWAP_WETH_USDT_PAIR))
 
   const reserveDAIETH: BigDecimal[] = getReservePairETH(daiPair, BigInt.fromI32(18))
   const daiInDaiPair = reserveDAIETH[0] // 3333.9315925102037
   const wethInDaiPair = reserveDAIETH[1] // 3.4854929201922125
-  
-  log.info('result getEthPriceInUSD DAI---#{}---#{}', [
-    daiInDaiPair.toString(),
-    wethInDaiPair.toString(),
-  ])
+
+  log.info('result getEthPriceInUSD DAI---#{}---#{}', [daiInDaiPair.toString(), wethInDaiPair.toString()])
 
   const reserveUSDCETH: BigDecimal[] = getReservePairETH(usdcPair, BigInt.fromI32(6))
   const usdcInUSDCPair = reserveUSDCETH[0] // 2552.551559
   const wethInUSDCPair = reserveUSDCETH[1] // 1.5010090492545534
 
-  log.info('result getEthPriceInUSD USDC---#{}---#{}', [
-    usdcInUSDCPair.toString(),
-    wethInUSDCPair.toString(),
-  ])
+  log.info('result getEthPriceInUSD USDC---#{}---#{}', [usdcInUSDCPair.toString(), wethInUSDCPair.toString()])
 
   const reserveUSDTETH: BigDecimal[] = getReservePairETH(usdtPair, BigInt.fromI32(6))
   const usdtInUSDTPair = reserveUSDTETH[0] // 3674.875997
   const wethInUSDTPair = reserveUSDTETH[1] // 0.9079877021261429
 
-  log.info('result getEthPriceInUSD USDT---#{}---#{}', [
-    usdtInUSDTPair.toString(),
-    wethInUSDTPair.toString(),
-  ])
+  log.info('result getEthPriceInUSD USDT---#{}---#{}', [usdtInUSDTPair.toString(), wethInUSDTPair.toString()])
 
   // all 3 have been created
   // develop
@@ -140,7 +129,7 @@ export function getEthPriceInUSD(): BigDecimal {
   // all 3 have been created
   // subgraph-exchange
   if (daiPair !== null && usdcPair !== null && usdtPair !== null) {
-    const totalLiquidityETH = wethInDaiPair.plus(wethInUSDCPair).plus(wethInUSDTPair) 
+    const totalLiquidityETH = wethInDaiPair.plus(wethInUSDCPair).plus(wethInUSDTPair)
     const daiWeight = wethInDaiPair.div(totalLiquidityETH)
     const usdcWeight = wethInUSDCPair.div(totalLiquidityETH)
     const usdtWeight = wethInUSDTPair.div(totalLiquidityETH)
@@ -179,7 +168,7 @@ function getReservePairETH(pair: PairContract, decimalToken: BigInt): BigDecimal
   } else {
     reserveToken = reserves.value1.toBigDecimal().div(exponentToBigDecimal(decimalToken))
     reserveWETH = reserves.value0.toBigDecimal().div(BIG_DECIMAL_1E18)
-  } 
+  }
   return [reserveToken, reserveWETH]
 }
 
