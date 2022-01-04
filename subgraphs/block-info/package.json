@@ -1,0 +1,26 @@
+{
+    "name": "block-info",
+    "license": "MIT",
+    "version": "1.0.0",
+    "author": "SoneSwap",
+    "files": [
+        "generated"
+    ],
+    "scripts": {
+        "codegen": "graph codegen block-info.yaml",
+        "build": "graph build block-info.yaml",
+
+        "create-private": "graph create --node https://graph-node.s-one.finance/8020/ s-one-finance/block-info",
+        "remove-private": "graph remove --node https://graph-node.s-one.finance/8020/ s-one-finance/block-info",
+        "deploy-private": "graph deploy --node https://graph-node.s-one.finance/8020/ --ipfs https://ipfs.s-one.finance s-one-finance/block-info block-info.yaml",
+        
+        "prepare:mainnet": "mustache config/mainnet.json block-info.template.yaml > block-info.yaml",
+        "prepare:rinkeby": "mustache config/rinkeby.json block-info.template.yaml > block-info.yaml",
+        "prepare:ropsten": "mustache config/ropsten.json block-info.template.yaml > block-info.yaml",
+        "prepare:bsc": "mustache config/bsc.json block-info.template.yaml > block-info.yaml",
+
+        "deploy": "yarn graph deploy --studio sone-block-info exchange.yaml",
+        "deploy-legacy:ropsten": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ s-one-system/sone-block-info-ropsten block-info.yaml",
+        "deploy-legacy:rinkeby": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ s-one-system/sone-block-info-rinkeby block-info.yaml"
+    }
+}

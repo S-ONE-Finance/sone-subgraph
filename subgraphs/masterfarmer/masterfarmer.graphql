@@ -149,8 +149,6 @@ type Pool @entity {
   # Sone harvested
   soneHarvested: BigDecimal!
 
-  # Sone harvested
-  soneHarvestedUSD: BigDecimal!
 }
 
 type PoolHistory @entity {
@@ -193,8 +191,6 @@ type PoolHistory @entity {
   # Sone harvested
   soneHarvested: BigDecimal!
 
-  # Sone harvested
-  soneHarvestedUSD: BigDecimal!
 }
 
 type User @entity {
@@ -230,9 +226,6 @@ type User @entity {
 
   # Sone harvested
   soneHarvested: BigDecimal!
-
-  # Sone harvested
-  soneHarvestedUSD: BigDecimal!
 
   # Timestamp
   timestamp: BigInt!

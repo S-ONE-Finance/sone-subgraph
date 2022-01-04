@@ -1,24 +1,39 @@
 {
     "name": "exchange",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "0.0.2",
     "author": "SoneSwap",
     "files": [
         "generated"
     ],
     "scripts": {
-        "codegen": "graph codegen exchange.yaml",
-        "build": "graph build exchange.yaml",
-        
-        "create-local": "graph create --node http://localhost:8020/ danielpham765/soneswap",
-        "remove-local": "graph remove --node http://localhost:8020/ danielpham765/soneswap",
-        "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 danielpham765/soneswap",
-
-        "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ danielpham765/soneswap exchange.yaml",
-        
         "prepare:mainnet": "mustache config/mainnet.json exchange.template.yaml > exchange.yaml",
         "prepare:rinkeby": "mustache config/rinkeby.json exchange.template.yaml > exchange.yaml",
         "prepare:ropsten": "mustache config/ropsten.json exchange.template.yaml > exchange.yaml",
-        "prepare:bsc": "mustache config/bsc.json exchange.template.yaml > exchange.yaml"
+        "prepare:bsc": "mustache config/bsc.json exchange.template.yaml > exchange.yaml",
+        "prepare:ganache": "mustache config/ganache.json exchange.template.yaml > exchange.yaml",
+
+        "codegen": "graph codegen exchange.yaml",
+        "build": "graph build exchange.yaml",
+
+        "create-local": "graph create --node http://localhost:8020/ s-one-finance/soneswap",
+        "remove-local": "graph remove --node http://localhost:8020/ s-one-finance/soneswap",
+        "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 s-one-finance/soneswap exchange.yaml",
+
+        "create-private:rinkeby": "graph create --node https://graph-node.s-one.finance/8020/ s-one-finance/soneswap",
+        "remove-private:rinkeby": "graph remove --node https://graph-node.s-one.finance/8020/ s-one-finance/soneswap",
+        "deploy-private:rinkeby": "graph deploy --node https://graph-node.s-one.finance/8020/ --ipfs https://ipfs.s-one.finance s-one-finance/soneswap exchange.yaml",
+
+        "create-private:ganache": "graph create --node https://graph-node-2.s-one.finance/8020/ s-one-finance/sone-swap",
+        "remove-private:ganache": "graph remove --node https://graph-node-2.s-one.finance/8020/ s-one-finance/sone-swap",
+        "deploy-private:ganache": "graph deploy --node https://graph-node-2.s-one.finance/8020/ --ipfs https://ipfs.s-one.finance s-one-finance/sone-swap exchange.yaml",
+        
+        "deploy": "yarn graph deploy --studio soneswap exchange.yaml",
+        "deploy-legacy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ danielpham765/sone-swap exchange.yaml",
+        "deploy-legacy:prod": "yarn graph deploy --product --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ s-one-system/sone-swap-ropsten exchange.yaml",
+
+        "create-mainnet": "graph create --node https://graph-node.s-one.finance/8020/ s-one-finance/soneswap",
+        "remove-mainnet": "graph remove --node https://graph-node.s-one.finance/8020/ s-one-finance/soneswap",
+        "deploy-mainnet": "graph deploy --node https://graph-node.s-one.finance/8020/ --ipfs https://ipfs.s-one.finance s-one-finance/soneswap exchange.yaml"
     }
 }

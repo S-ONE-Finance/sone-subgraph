@@ -6,11 +6,13 @@
   "private": true,
   "main": "index.ts",
   "scripts": {
-    "codegen": ".",
-    "build": ".",
+    "codegen": "echo skip",
+    "build": "echo skip",
     "prepare:bsc": "mustache config/bsc.json index.template.ts > index.ts",
     "prepare:mainnet": "mustache config/mainnet.json index.template.ts > index.ts",
     "prepare:rinkeby": "mustache config/rinkeby.json index.template.ts > index.ts",
-    "prepare:ropsten": "mustache config/ropsten.json index.template.ts > index.ts"
+    "prepare:ropsten": "mustache config/ropsten.json index.template.ts > index.ts",
+    "prepare:private": "mustache config/private.json index.template.ts > index.ts",
+    "prepare:local": "mustache config/local.json index.template.ts > index.ts"
   }
 }

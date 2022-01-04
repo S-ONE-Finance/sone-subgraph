@@ -8,16 +8,11 @@
         "./*.json"
     ],
     "scripts": {
-        "codegen": ".",
-        "build": ".",
-        "prepare:bsc": ".",
-        "prepare:fantom": ".",
-        "prepare:goerli": ".",
-        "prepare:kovan": ".",
-        "prepare:mainnet": ".",
-        "prepare:matic": ".",
-        "prepare:rinkeby": ".",
-        "prepare:ropsten": ".",
-        "prepare:xdai": "."
+        "build": "echo skip",
+        "codegen": "echo skip",
+        "prepare:bsc": "echo skip",
+        "prepare:mainnet": "echo skip",
+        "prepare:rinkeby": "echo skip",
+        "prepare:ropsten": "echo skip"
     }
 }

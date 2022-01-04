@@ -14,9 +14,9 @@
     "prepare:ropsten": "yarn workspaces run prepare:ropsten"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "^0.20.0",
+    "@graphprotocol/graph-cli": "^0.21.1",
     "@graphprotocol/graph-ts": "^0.20.0",
-    "@s-one-finance/core": "^0.0.5",
+    "@s-one-finance/core": "^2.0.0-rc1",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
     "eslint": "^7.0.0",

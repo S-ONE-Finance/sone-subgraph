@@ -1,0 +1,23 @@
+{
+    "factory_address": "0xf3BdB4541d7094962044cD2D86500464CA07037c",
+    "masterfarmer_address": "0xc912421c25703820e44594153169523569DB9917",
+    "sone_token_address": "0xd0A3Fd44eF5579b813a2Aaec0CE85dF62b864830",
+    "sone_usdt_pair_address": "0xeA66b5d3EF11f7b331664819dCA4D9e6600626cB",
+    "sone_distributor_address": "0x0000000000000000000000000000000000000000",
+    "usdc_weth_pair": "0xEF55F64dEaBF840DbD611e63C3c04360D3129e88",
+    "dai_weth_pair": "0x069e1898B810933B165C5766478Edef6060746a9",
+    "usdt_weth_pair": "0x1da05b4a2314f414cf9772915533a21790A7f6F1",
+    "sone_usdt_pair": "0xeA66b5d3EF11f7b331664819dCA4D9e6600626cB",
+    "weth_address": "0xF082a0112B6cF43Dd05f0E8965a0eFc5788eCc71",
+    "soneswap_weth_usdt_pair_address": "0x1da05b4a2314f414cf9772915533a21790A7f6F1",
+    "usdt_address": "0x277B445e83Ed86b10D83c95C68F23ADDc903Df51",
+    "uniswap_factory_address": "0xf3BdB4541d7094962044cD2D86500464CA07037c",
+    "uniswap_weth_usdt_pair_address": "0x1da05b4a2314f414cf9772915533a21790A7f6F1",
+    "uniswap_sone_eth_pair_address": "0x29827B1951faB236f2747A8D6062EA6016C3EA52", 
+    "uniswap_sone_usdt_pair_address": "0xeA66b5d3EF11f7b331664819dCA4D9e6600626cB",
+    "min_liquidity_threshold": "0",
+    "master_farmer_start_block": "0",
+    "uniswap_sone_eth_start_block": "0",
+    "sone_factory_start_block": "0",
+    "sone_usdt_pair_start_block": "0"
+}

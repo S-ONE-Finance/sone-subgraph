@@ -1,5 +1,5 @@
 specVersion: 0.0.3
-description: Exchange
+description: S-ONE Swap is a decentralized protocol for automated token exchange on Ethereum.
 repository: https://github.com/S-ONE-Finance/subgraph
 schema:
   file: ./exchange.graphql
@@ -18,22 +18,21 @@ dataSources:
       file: ./src/exchange/mappings/factory.ts
       entities:
         - Factory
+        - Token
       abis:
         - name: Factory
-          file: ../../node_modules/@s-one-finance/core/build/contracts/UniswapV2Factory.json
-        - name: Pair
-          file: ../../node_modules/@s-one-finance/core/build/contracts/UniswapV2Pair.json
-        - name: SoneToken
-          file: ../../node_modules/@s-one-finance/core/build/contracts/SoneToken.json
+          file: ../../node_modules/@s-one-finance/core/artifacts/contracts/sone-smart-contracts/uniswapv2/UniswapV2Factory.sol/UniswapV2Factory.json
         - name: ERC20
-          file: ../../node_modules/@s-one-finance/core/build/contracts/ERC20.json
+          file: ../../node_modules/@s-one-finance/core/artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json
         - name: ERC20SymbolBytes
           file: ../../packages/abis/ERC20SymbolBytes.json
         - name: ERC20NameBytes
           file: ../../packages/abis/ERC20NameBytes.json
+        - name: SoneToken
+          file: ../../node_modules/@s-one-finance/core/artifacts/contracts/sone-token-sale/SoneToken.sol/SoneToken.json
       eventHandlers:
         - event: PairCreated(indexed address,indexed address,address,uint256)
-          handler: onPairCreated
+          handler: handleNewPair
 templates:
   - kind: ethereum/contract
     name: Pair
@@ -44,32 +43,23 @@ templates:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
-      file: ./src/exchange/mappings/pair.ts
+      file: ./src/exchange/mappings/core.ts
       entities:
-        - Bundle
-        - Burn
-        - LiquidityPosition
-        - LiquidityPositionSnapshot
-        - Mint
         - Pair
-        - Swap
-        - Sync
         - Token
-        - Transaction
-        - User
       abis:
         - name: Pair
-          file: ../../node_modules/@s-one-finance/core/build/contracts/UniswapV2Pair.json
+          file: ../../node_modules/@s-one-finance/core/artifacts/contracts/sone-smart-contracts/uniswapv2/UniswapV2Pair.sol/UniswapV2Pair.json
         - name: Factory
-          file: ../../node_modules/@s-one-finance/core/build/contracts/UniswapV2Factory.json
+          file: ../../node_modules/@s-one-finance/core/artifacts/contracts/sone-smart-contracts/uniswapv2/UniswapV2Factory.sol/UniswapV2Factory.json
       eventHandlers:
         - event: Mint(indexed address,uint256,uint256)
-          handler: onMint
+          handler: handleMint
         - event: Burn(indexed address,uint256,uint256,indexed address)
-          handler: onBurn
+          handler: handleBurn
         - event: Swap(indexed address,uint256,uint256,uint256,uint256,indexed address)
-          handler: onSwap
+          handler: handleSwap
         - event: Transfer(indexed address,indexed address,uint256)
-          handler: onTransfer
+          handler: handleTransfer
         - event: Sync(uint112,uint112)
-          handler: onSync
+          handler: handleSync

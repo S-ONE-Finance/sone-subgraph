@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: MasterChef
-    network: mainnet
+    network: ropsten
     source:
-      address: '0xc2edad668740f1aa35e4d8f227fb8e17dca888cd'
+      address: '0x80c7dd17b01855a6d2347444a0fcc36136a314de'
       abi: MasterChef
-      startBlock: 10736242
+      startBlock: 9731346
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4

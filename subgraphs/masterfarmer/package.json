@@ -4,15 +4,6 @@
     "version": "1.0.0",
     "author": "SushiSwap",
     "scripts": {
-        "codegen": "graph codegen masterfarmer.yaml",
-        "build": "graph build masterfarmer.yaml",
-
-        "create-local": "graph create --node http://localhost:8020/ /s-one-finance/master-farmer",
-        "remove-local": "graph remove --node http://localhost:8020/ /s-one-finance/master-farmer",
-        "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 /s-one-finance/master-farmer",
-
-        "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ danielpham765/master-farmer masterfarmer.yaml",
-        
         "prepare:bsc": "mustache config/bsc.json masterfarmer.template.yaml > masterfarmer.yaml",
         "prepare:fantom": "mustache config/fantom.json masterfarmer.template.yaml > masterfarmer.yaml",
         "prepare:goerli": "mustache config/goerli.json masterfarmer.template.yaml > masterfarmer.yaml",
@@ -21,6 +12,29 @@
         "prepare:matic": "mustache config/matic.json masterfarmer.template.yaml > masterfarmer.yaml",
         "prepare:rinkeby": "mustache config/rinkeby.json masterfarmer.template.yaml > masterfarmer.yaml",
         "prepare:ropsten": "mustache config/ropsten.json masterfarmer.template.yaml > masterfarmer.yaml",
-        "prepare:xdai": "mustache config/xdai.json masterfarmer.template.yaml > masterfarmer.yaml"
+        "prepare:xdai": "mustache config/xdai.json masterfarmer.template.yaml > masterfarmer.yaml",
+
+        "codegen": "graph codegen masterfarmer.yaml",
+        "build": "graph build masterfarmer.yaml",
+        
+        "create-local": "graph create --node http://localhost:8020/ s-one-finance/masterfarmer",
+        "remove-local": "graph remove --node http://localhost:8020/ s-one-finance/masterfarmer",
+        "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001/ s-one-finance/masterfarmer masterfarmer.yaml",
+
+        "create-private:rinkeby": "graph create --node https://graph-node.s-one.finance/8020/ s-one-finance/master-farmer",
+        "remove-private:rinkeby": "graph remove --node https://graph-node.s-one.finance/8020/ s-one-finance/master-farmer",
+        "deploy-private:rinkeby": "graph deploy --node https://graph-node.s-one.finance/8020/ --ipfs https://ipfs.s-one.finance s-one-finance/master-farmer masterfarmer.yaml",
+
+        "create-private:ganache": "graph create --node https://graph-node-2.s-one.finance/8020/ s-one-finance/master-farmer",
+        "remove-private:ganache": "graph remove --node https://graph-node-2.s-one.finance/8020/ s-one-finance/master-farmer",
+        "deploy-private:ganache": "graph deploy --node https://graph-node-2.s-one.finance/8020/ --ipfs https://ipfs.s-one.finance s-one-finance/master-farmer masterfarmer.yaml",
+        
+        "deploy": "yarn graph deploy --studio master-farmer masterfarmer.yaml",
+        "deploy-legacy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ danielpham765/master-farmer masterfarmer.yaml",
+        "deploy-legacy:prod": "yarn graph deploy --product --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ s-one-system/master-farmer masterfarmer.yaml",
+
+        "create-mainnet": "graph create --node https://graph-node.s-one.finance/8020/ s-one-finance/master-farmer",
+        "remove-mainnet": "graph remove --node https://graph-node.s-one.finance/8020/ s-one-finance/master-farmer",
+        "deploy-mainnet": "graph deploy --node https://graph-node.s-one.finance/8020/ --ipfs https://ipfs.s-one.finance s-one-finance/master-farmer masterfarmer.yaml"
     }
 }

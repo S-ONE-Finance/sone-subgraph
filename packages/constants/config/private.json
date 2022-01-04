@@ -1,0 +1,23 @@
+{
+    "factory_address": "0xcd9a70C13C88863ECE51B302a77D2EB98fBBBD65",
+    "masterfarmer_address": "0x093514489C4b42Ff54f942f4F91De3F89c797aAb",
+    "sone_token_address": "0x3DD0864668C36D27B53a98137764c99F9FD5B7B2",
+    "sone_usdt_pair_address": "0x0000000000000000000000000000000000000000",
+    "sone_distributor_address": "0x0000000000000000000000000000000000000000", // ko dùng
+    "usdc_weth_pair": "0x0000000000000000000000000000000000000000",
+    "dai_weth_pair": "0x0000000000000000000000000000000000000000",
+    "usdt_weth_pair": "0x0000000000000000000000000000000000000000",
+    "sone_usdt_pair": "0x0000000000000000000000000000000000000000",
+    "weth_address": "0x3441FA3Bb5cF8c694eD8EA665ec92e700c0BcD01",
+    "soneswap_weth_usdt_pair_address": "0x0000000000000000000000000000000000000000",
+    "usdt_address": "0x0000000000000000000000000000000000000000",
+    "uniswap_factory_address": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f",
+    "uniswap_weth_usdt_pair_address": "0x0000000000000000000000000000000000000000",
+    "uniswap_sone_eth_pair_address": "0x0000000000000000000000000000000000000000",
+    "uniswap_sone_usdt_pair_address": "0x0000000000000000000000000000000000000000",
+    "min_liquidity_threshold": "0", // ko dùng
+    "master_farmer_start_block": "0",
+    "uniswap_sone_eth_start_block": "0",
+    "sone_factory_start_block": "0",
+    "sone_usdt_pair_start_block": "0"
+}

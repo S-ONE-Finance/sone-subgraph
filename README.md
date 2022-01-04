@@ -7,13 +7,12 @@ The Graph exposes a GraphQL endpoint to query the events and entities within the
 Current subgraph locations:
 
 1. **Exchange**: Includes all SoneSwap Exchange data with Price Data, Volume, Users, etc:
-   + https://thegraph.com/explorer/subgraph/s-one-finance/exchange (mainnet)
-   + https://thegraph.com/explorer/subgraph/s-one-finance/exchange-ropsten
-   + https://thegraph.com/explorer/subgraph/s-one-finance/exchange-rinkeby
+   + https://graph-node.s-one.finance/subgraphs/name/s-one-finance/soneswap/graphql (mainnet)
+   + https://graph-node-2.s-one.finance/subgraphs/name/s-one-finance/soneswap/graphql (rinkeby)
 
-2. **Master Farmer**: Indexes all MasterFarmer staking data: https://thegraph.com/explorer/subgraph/s-one-finance/master-farmer
-
-3. **SoneSwap-SubGraph-Fork** (on uniswap-fork branch): Indexes the SoneSwap Factory, includes Price Data, Pricing, etc: https://thegraph.com/explorer/subgraph/jiro-ono/s-one-finance-v1-exchange
+2. **Master Farmer**: Indexes all MasterFarmer staking data:
+  + https://graph-node.s-one.finance/subgraphs/name/s-one-finance/master-farmer/graphql (mainnet)
+   + https://graph-node-2.s-one.finance/subgraphs/name/s-one-finance/master-farmer/graphql (rinkeby)
 
 ## To setup and deploy
 
@@ -73,8 +72,3 @@ We will add to this as development progresses.
   }
 }
 ```
-
-# Community Subgraphs
-
-1) croco-finance fork of this repo with slight modifications - [deployment](https://thegraph.com/explorer/subgraph/benesjan/sone-swap), [code](https://github.com/croco-finance/s-one-finance-subgraph)
-2) croco-finance dex-rewards-subgraph which tracks SLPs in MasterFarmer and all the corresponding rewards individually. (can be used for analysis of user's positions) - [deployment](https://thegraph.com/explorer/subgraph/benesjan/dex-rewards-subgraph), [code](https://github.com/croco-finance/dex-rewards-subgraph)

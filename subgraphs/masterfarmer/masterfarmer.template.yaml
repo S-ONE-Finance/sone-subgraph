@@ -23,13 +23,13 @@ dataSources:
         - User
       abis:
         - name: MasterFarmer
-          file: ../../node_modules/@s-one-finance/core/build/contracts/SoneMasterFarmer.json
+          file: ../../node_modules/@s-one-finance/core/artifacts/contracts/sone-smart-contracts/SoneMasterFarmer.sol/SoneMasterFarmer.json
         - name: Factory
-          file: ../../node_modules/@s-one-finance/core/build/contracts/UniswapV2Factory.json
+          file: ../../node_modules/@s-one-finance/core/artifacts/contracts/sone-smart-contracts/uniswapv2/UniswapV2Factory.sol/UniswapV2Factory.json
         - name: Pair
-          file: ../../node_modules/@s-one-finance/core/build/contracts/UniswapV2Pair.json
+          file: ../../node_modules/@s-one-finance/core/artifacts/contracts/sone-smart-contracts/uniswapv2/UniswapV2Pair.sol/UniswapV2Pair.json
         - name: ERC20
-          file: ../../node_modules/@s-one-finance/core/build/contracts/ERC20.json
+          file: ../../node_modules/@s-one-finance/core/artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json
       eventHandlers:
         - event: Deposit(indexed address,indexed uint256,uint256)
           handler: deposit
@@ -39,19 +39,20 @@ dataSources:
           handler: ownershipTransferred
         - event: Withdraw(indexed address,indexed uint256,uint256)
           handler: withdraw
-      callHandlers:
-        - function: add(uint256,address,bool)
+        - event: Add(uint256,address,bool)
           handler: add
-        - function: set(uint256,uint256,bool)
+        - event: Set(indexed uint256,uint256,bool)
           handler: set
-        - function: massUpdatePools()
-          handler: massUpdatePools
-        - function: updatePool(uint256)
-          handler: updatePool
-        - function: setMigrator(address)
+        - event: SetMigrator(address)
           handler: setMigrator
-        - function: migrate(uint256)
+        - event: Migrate(indexed uint256)
           handler: migrate
-        - function: dev(address)
+        - event: UpdatePool(indexed uint256)
+          handler: updatePool
+        - event: Dev(address)
           handler: dev
+        - event: SendSoneReward(indexed address,indexed uint256,uint256,uint256)
+          handler: sendSoneReward
+      blockHandlers:
+        - handler: handleBlock
       file: ./src/masterfarmer.ts
